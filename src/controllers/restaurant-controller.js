@@ -34,4 +34,29 @@ export class RestaurantController {
         }
     }
 
+    async delete(req, res, next) {
+        const { restaurantId } = req.params;
+        const requestedBy = req.user.id;
+
+        try {
+            await this.restaurantService.delete(restaurantId, requestedBy);
+            res.status(200).json({ message: "Restaurant successfully deleted." });
+        } catch (error) {
+            return next(error);
+        }
+    }
+
+    async update(req, res, next) {
+        const { restaurantId } = req.params;
+        const requestedBy = req.user.id;
+        const { name, location, openingHours, description } = req.body;
+
+        try {
+            const updatedRestaurant = await this.restaurantService.update(restaurantId, requestedBy, name, location, openingHours, description);
+            res.status(200).json(updatedRestaurant);
+        } catch (error) {
+            return next(error);
+        }
+    }
+
 }
