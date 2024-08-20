@@ -7,6 +7,10 @@ export const ErrorHandler = (err, req, res, next) => {
         return res.status(404).json({ error: "Resource not found." });
     } else if (err.message === "VALIDATION_ERROR") {
         return res.status(400).json({ error: "Validation error. Please check the data provided." });
+    } else if (err.message === "RESOURCE_NOT_OWNED") {
+        return res.status(403).json({ error: "Only the owner can delete the restaurant." });
+    } else if (err.message === "NOT_ALLOWED") {
+        return res.status(403).json({ error: "Not authorized to use this resource." });
     } else {
         return res.status(500).json({ error: `Internal server error ${err.message}` });
     }
