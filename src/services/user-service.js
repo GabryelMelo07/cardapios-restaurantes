@@ -16,7 +16,13 @@ export class UserService {
                 active: true,
                 createdAt: true,
                 updatedAt: true
-            }
+            },
+            where: {
+                active: true
+            },
+            orderBy: [
+                { name: 'asc' }
+            ]
         });
     }
 
@@ -35,5 +41,16 @@ export class UserService {
         delete newUser['password'];
         return newUser;
     }
-    
+
+    async disable(userId) {
+        await this.db.user.update({
+            where: {
+                id: userId
+            },
+            data: {
+                active: false
+            }
+        });
+    }
+
 }

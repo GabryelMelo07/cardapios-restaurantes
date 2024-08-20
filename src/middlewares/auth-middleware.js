@@ -9,6 +9,6 @@ export const isAuth = (req, res, next) => {
         next();
     } catch (error) {
         console.log({ error });
-        res.status(403).send("Não autenticado.");
+        res.status(401).json({ error_message: "Not authenticated." });
     }
 }
