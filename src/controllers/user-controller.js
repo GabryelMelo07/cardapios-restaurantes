@@ -47,4 +47,16 @@ export class UserController {
         }
     }
 
+    async update(req, res, next) {
+        const requestedBy = req.user.id;
+        const { name, password, phone } = req.body;
+
+        try {
+            const updatedUser = await this.userService.update(requestedBy, name, password, phone);
+            res.status(200).json(updatedUser);
+        } catch (error) {
+            return next(error);
+        }
+    }
+
 }

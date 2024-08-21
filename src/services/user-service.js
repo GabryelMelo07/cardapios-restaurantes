@@ -53,4 +53,32 @@ export class UserService {
         });
     }
 
+    async update(requestedBy, name, password, phone) {
+        const user = await this.db.user.findUniqueOrThrow({
+            where: {
+                id: requestedBy
+            }
+        }, new Error("NOT_FOUND"));
+
+        if (user.id !== requestedBy) {
+            throw new Error("FORBIDDEN")
+        }
+
+        const encryptedPassword = hashSync(password, 12);
+        
+        const updatedUser = await this.db.user.update({
+            where: {
+                id: requestedBy
+            },
+            data: {
+                name,
+                password: encryptedPassword,
+                phone
+            }
+        });
+
+        delete updatedUser['password'];
+        return updatedUser;
+    }
+
 }
