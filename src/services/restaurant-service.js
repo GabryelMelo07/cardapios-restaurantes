@@ -11,7 +11,8 @@ export class RestaurantService {
                 { id: 'asc' }
             ],
             include: {
-                sharedWith: true
+                sharedWith: true,
+                menu: true
             }
         });
     }
@@ -33,19 +34,30 @@ export class RestaurantService {
     }
 
     async share(restaurantId, userIdToShare, ownerId) {
-        const restaurant = await this.db.restaurant.update({
-            where: {
-                id: Number(restaurantId),
-                userId: ownerId
-            },
-            data: {
-                sharedWith: {
-                    connect: { id: userIdToShare }
+        try {
+            const restaurant = await this.db.restaurant.update({
+                where: {
+                    id: Number(restaurantId),
+                    userId: ownerId
+                },
+                include: {
+                    sharedWith: true
+                },
+                data: {
+                    sharedWith: {
+                        connect: { id: userIdToShare }
+                    }
                 }
+            });
+    
+            return restaurant;
+        } catch (error) {
+            if (error.message.includes("Invalid `prisma.restaurant.update()` invocation") && error.message.includes("Required exactly one parent ID to be present for connect query")) {
+                throw new Error("NOT_ALLOWED");
             }
-        });
 
-        return restaurant;
+            throw error;
+        }
     }
 
     async delete(restaurantId, requestedBy) {
@@ -64,26 +76,7 @@ export class RestaurantService {
         });
     }
 
-    async update(restaurantId, requestedBy, name, location, openingHours, description) {
-        const restaurant = await this.db.restaurant.findUniqueOrThrow({
-            where: {
-                id: Number(restaurantId),
-            },
-            include: {
-                sharedWith: true
-            }
-        }, new Error("NOT_FOUND"));
-
-        if (!restaurant) {
-            throw new Error("NOT_FOUND");
-        }
-
-        const isSharedWithUser = restaurant.sharedWith.some(user => user.id === requestedBy);
-
-        if (restaurant.userId !== requestedBy && !isSharedWithUser) {
-            throw new Error("NOT_ALLOWED");
-        }
-
+    async update(restaurantId, name, location, openingHours, description) {
         const updatedRestaurant = await this.db.restaurant.update({
             where: {
                 id: Number(restaurantId)

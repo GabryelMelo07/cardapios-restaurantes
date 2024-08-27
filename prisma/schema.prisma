@@ -37,6 +37,48 @@ model Restaurant {
   userId       String @map("user_id")
   owner        User   @relation("OwnerRestaurants", fields: [userId], references: [id])
   sharedWith   User[] @relation("SharedRestaurants")
+  menu         Menu?
 
   @@map("restaurants")
+}
+
+model Menu {
+  id           Int        @id @default(autoincrement())
+  restaurantId Int        @unique @map("restaurant_id")
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  categories   Category[]
+
+  @@map("menus")
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  menuId   Int       @map("menu_id")
+  menu     Menu      @relation(fields: [menuId], references: [id])
+  products Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  price       Float
+  image       String?
+  categoryId  Int      @map("category_id")
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@map("products")
+}
+
+model Logs {
+  id          Int      @id @default(autoincrement())
+  action      String
+  description String
+  date        DateTime @default(now())
+  userId      String   @map("user_id")
+  method      String
+  path        String
 }

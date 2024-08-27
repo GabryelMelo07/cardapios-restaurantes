@@ -10,7 +10,7 @@ export class UserController {
     async login(req, res, next) {
         try {
             const token = await this.authService.authenticate(req, res);
-            res.status(200).json({ token });
+            return res.status(200).json({ token });
         } catch (error) {
             return next(error);
         }
@@ -25,7 +25,7 @@ export class UserController {
         try {
             const { email, name, password, phone } = req.body;
             const user = await this.userService.save(email, name, password, phone);
-            return res.json(user);
+            return res.status(201).json(user);
         } catch (error) {
             return next(error);
         }
@@ -41,7 +41,7 @@ export class UserController {
             }
             
             await this.userService.disable(userId);
-            res.status(200).json({ error_message: "User disabled" });
+            return res.status(200).json({ error_message: "User disabled" });
         } catch (error) {
             return next(error);
         }
@@ -53,7 +53,7 @@ export class UserController {
 
         try {
             const updatedUser = await this.userService.update(requestedBy, name, password, phone);
-            res.status(200).json(updatedUser);
+            return res.status(200).json(updatedUser);
         } catch (error) {
             return next(error);
         }
