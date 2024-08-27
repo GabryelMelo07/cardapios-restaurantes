@@ -2,6 +2,7 @@ import express from 'express';
 import { PrismaClient } from "@prisma/client";
 import { UserRouter } from './routers/user-router.js';
 import { RestaurantRouter } from './routers/restaurant-router.js';
+import { MenuRouter } from './routers/menu-router.js';
 import { ErrorHandler } from './middlewares/error-handler.js';
 
 const prisma = new PrismaClient();
@@ -12,6 +13,7 @@ app.use(express.json());
 // Router mapping
 app.use(UserRouter);
 app.use(RestaurantRouter);
+app.use(MenuRouter);
 
 // Global Error Handling
 app.use(ErrorHandler);
