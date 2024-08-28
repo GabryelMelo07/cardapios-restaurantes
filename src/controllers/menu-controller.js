@@ -42,7 +42,10 @@ export class MenuController {
 
     async addProductToCategory(req, res, next) {
         const { restaurantId, categoryId } = req.params;
-        const { name, description, price, image = "" } = req.body;
+        const { name, description } = req.body;
+        const price = parseFloat(req.body.price);
+
+        const image = req.file;
 
         try {
             const menu = await this.menuService.addProductToCategory(restaurantId, categoryId, name, description, price, image);
@@ -100,11 +103,25 @@ export class MenuController {
 
     async updateProduct(req, res, next) {
         const { productId } = req.params;
-        const { name, description, price, image } = req.body;
+        const { name, description } = req.body;
+        const price = parseFloat(req.body.price);
+        const image = req.file;
 
         try {
             await this.menuService.updateProduct(productId, name, description, price, image);
             return res.status(200).json({ message: "Product updated successfully." });
+        } catch (error) {
+            return next(error);
+        }
+    }
+
+    async uploadProductImage(req, res, next) {
+        const { productId } = req.params;
+        const image = req.file;
+
+        try {
+            await this.menuService.uploadProductImage(productId, image);
+            return res.status(200).json({ message: "Product image uploaded successfully." });
         } catch (error) {
             return next(error);
         }

@@ -1,0 +1,915 @@
+_type: export
+__export_format: 4
+__export_date: 2024-08-28T02:44:32.508Z
+__export_source: insomnia.desktop.app:v9.3.3
+resources:
+  - _id: req_5a1b70925e5f4f1194af4bfca9e2c63f
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724644851812
+    created: 1724295792152
+    url: http://localhost:3000/menus
+    name: Get All Menus
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724200996158
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_0b8f446519034cf892bb63324b04e32b
+    parentId: fld_6bbd389e92e9451ba86982e3dab3c082
+    modified: 1724200964036
+    created: 1724200964036
+    name: Menu
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1724200964036
+    _type: request_group
+  - _id: fld_6bbd389e92e9451ba86982e3dab3c082
+    parentId: wrk_6e4242392bd742d69c9de24a94d1d6b4
+    modified: 1724812957345
+    created: 1724085879062
+    name: Gestão Restaurantes - Web 2
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1724085879062
+    _type: request_group
+  - _id: wrk_6e4242392bd742d69c9de24a94d1d6b4
+    parentId: null
+    modified: 1724126251333
+    created: 1724126251333
+    name: Scratch Pad
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_b53617286841497f91111b5feae0c486
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724730553922
+    created: 1724296440856
+    url: http://localhost:3000/menu/restaurant/1
+    name: Get Menu By Restaurant Id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724200996108
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d65d621c1c884aa693b6bd6db6ecc684
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724733498936
+    created: 1724731972235
+    url: http://localhost:3000/menus/find?page=1&pageSize=5&searchTerm=Frutos%20do%20mar
+    name: Get Restaurants By Filter (Category Or Produtct)
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724200996095.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9ad0d413829d4574bd6b756053a5852f
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724645415760
+    created: 1724644899475
+    url: http://localhost:3000/menus/restaurant/1/create
+    name: Create Menu
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"categories": [
+        		{
+        			"name": "Pratos principais",
+        			"products": [
+        				{
+        					"name": "Frango Grelhado",
+        					"description": "Frango grelhado, arroz, feijão, farofa e salada",
+        					"price": 38.90,
+        					"image": ""
+        				},
+        				{
+        					"name": "Bife à cavalo",
+        					"description": "Filé mignon grelhado, arroz, feijão, farofa e ovo",
+        					"price": 58.90,
+        					"image": ""
+        				},
+        				{
+        					"name": "Alaminuta calabresa",
+        					"description": "Alaminuta de calabresa acompanhada de arroz, batata frita, feijão, alface e tomate, e um ovo frito",
+        					"price": 35.99,
+        					"image": ""
+        				}
+        			]
+        		},
+        		{
+        			"name": "Sobremesas",
+        			"products": [
+        				{
+        					"name": "Pudim",
+        					"description": "",
+        					"price": 15.90,
+        					"image": ""
+        				}
+        			]
+        		}
+        	]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724200996083
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_16b7c71b3b114081b93865a7d0dc0417
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724801897312
+    created: 1724200996058
+    url: http://localhost:3000/menus/restaurant/1/add-category
+    name: Add Category to Menu
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"categoryName": "Frutos do mar"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724200996058
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f7dec4599b5d49018c4d970234bd619c
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724811561004
+    created: 1724811509174
+    url: http://localhost:3000/menus/restaurant/1/category/3/add-product
+    name: Add Product to Category (Menu)
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Pudim de leite",
+        	"description": "Pudim de leite para 2 pessoas",
+        	"price": 39.99
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724200279016.1875
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c79353615a21423495316129c6c00686
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724811497128
+    created: 1724384531295
+    url: http://localhost:3000/menus/restaurant/1/category/3/add-product
+    name: Add Product (with Image) to Category (Menu)
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_aeecdf9283964e679e52c3421d7beafc
+          name: name
+          value: Porção de camarão 500g
+          description: ""
+          disabled: false
+        - id: pair_cb377bda8c0b4f87bb1cc1bd5004420a
+          name: description
+          value: Porção de camarão para 2 pessoas, acompanha molhos especiais
+          description: ""
+          disabled: false
+        - id: pair_26bebe135c2b4921a5533bcf8b71344e
+          name: price
+          value: "85.99"
+          description: ""
+          disabled: false
+          type: text
+          multiline: false
+        - id: pair_ce72b40709a647119d95171e088ca66d
+          name: file
+          value: ""
+          description: ""
+          disabled: false
+          type: file
+          multiline: true
+          fileName: C:\Users\Gabryel Melo\Desktop\camarao.jpg
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_19c41bf6acf647a6b3991acf9b4ed77f
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724199561974.375
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a94cdfbd055c40a99867e8ffc8b1d97f
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724801993122
+    created: 1724474741431
+    url: http://localhost:3000/menus/restaurant/1/category/2/delete
+    name: Delete Category
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724198127890.75
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6bab4525117243e182cb6f7f608fcb1d
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724802688287
+    created: 1724643496264
+    url: http://localhost:3000/menus/restaurant/1/category/3/product/5/delete
+    name: Delete Product From Category
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724196693807.125
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3bcb813c4578423ab78fcf1325a011c4
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724802178007
+    created: 1724725117924
+    url: http://localhost:3000/menus/restaurant/1/category/2/update-name
+    name: Update Category Name
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"categoryName": "Teste"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724196693707.125
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e98c1a7b3eee4368a4446a21a48c0538
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724811411310
+    created: 1724729264648
+    url: http://localhost:3000/menus/restaurant/1/product/6/update
+    name: Update Product
+    description: ""
+    method: PUT
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_4d01dfea6f124468be12f451eb92dd6b
+          name: name
+          value: Torta de maçã
+          description: ""
+          disabled: false
+        - id: pair_119e55a98ca243069d75d1c3c488f655
+          name: description
+          value: Torta de mação para 2 pessoas
+          description: ""
+          disabled: false
+        - id: pair_412ebddd0bfe41c39af0ef272d598d98
+          name: price
+          value: "39.99"
+          description: ""
+          disabled: false
+        - id: pair_aae09f62b3dc4f8a8b2a65d25404e35a
+          name: file
+          value: ""
+          description: ""
+          disabled: false
+          type: file
+          fileName: C:\Users\Gabryel Melo\Desktop\pudim-de-leite-receita.jpg
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724187372213.5625
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bfd252b50b074bef94c2edd33e7b0aeb
+    parentId: fld_0b8f446519034cf892bb63324b04e32b
+    modified: 1724812428394
+    created: 1724811438353
+    url: http://localhost:3000/menus/restaurant/1/product/7/upload-image
+    name: Upload Product Image
+    description: ""
+    method: PATCH
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_ef6793b07520413c8ddbf8a4e7a672f3
+          name: file
+          value: ""
+          description: ""
+          disabled: false
+          type: file
+          fileName: C:\Users\Gabryel Melo\Desktop\pudim-de-leite-receita.jpg
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_d8ca745223524e50bdd1b809c86670d9
+      - id: pair_f43d1a99ff544660a0e720a6cd4e951f
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724182711466.7812
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_28c34c3cbf314560a5d114c81b0c0cc0
+    parentId: fld_e3b6873187834da0aefd7191f85f9557
+    modified: 1724644856974
+    created: 1724124358169
+    url: http://localhost:3000/restaurants
+    name: Get All Restaurants
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+    authentication: {}
+    metaSortKey: -1724124393515
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_e3b6873187834da0aefd7191f85f9557
+    parentId: fld_6bbd389e92e9451ba86982e3dab3c082
+    modified: 1724124352647
+    created: 1724124352647
+    name: Restaurant
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1724124352647
+    _type: request_group
+  - _id: req_8be284fa314a45e0a16c78640d506f9b
+    parentId: fld_e3b6873187834da0aefd7191f85f9557
+    modified: 1724801382070
+    created: 1724124666792
+    url: http://localhost:3000/restaurants
+    name: Save Restaurant
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"name": "Plaza Grill",
+        	"location": "R. Gen. Bacelar, 457 - Centro, Rio Grande - RS, 96200-370",
+        	"openingHours": "11:00-23:00",
+        	"description": "Buffet variado com saladas, carnes grelhadas, massas, acompanhamentos e sobremesas, em ambiente informal."
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_d3809d46201f4a50b5c2ea9dbe0a7718
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_a47bb98a7de24a6c92fbeb4a4f808f71
+      - id: pair_472d6540bb6f4f1d91598154263012dc
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724124393415
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7d35a6261a4345789242f250c457233b
+    parentId: fld_e3b6873187834da0aefd7191f85f9557
+    modified: 1724798211809
+    created: 1724125849368
+    url: http://localhost:3000/restaurants/1/share/1af7b2f6-ab63-4971-9d34-201682af3b0a
+    name: Share Restaurant
+    description: ""
+    method: PATCH
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_a47bb98a7de24a6c92fbeb4a4f808f71
+      - id: pair_472d6540bb6f4f1d91598154263012dc
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724124391212.125
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_8b35ce7ee86c481b95ceab7f6cffe838
+    parentId: fld_e3b6873187834da0aefd7191f85f9557
+    modified: 1724726244336
+    created: 1724196371034
+    url: http://localhost:3000/restaurants/2
+    name: Update Restaurant
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"name": "Galeteria da Nonna",
+        	"location": "R. Andradas, 432 - Centro, Rio Grande - RS, 96200-030",
+        	"openingHours": "11:40-14:30, 19:30-23:00",
+        	"description": "Restaurante descontraído com braseiro de carnes nobres e vinhos, entre opções apuradas e antepastos no buffet."
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_d3809d46201f4a50b5c2ea9dbe0a7718
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_a47bb98a7de24a6c92fbeb4a4f808f71
+      - id: pair_472d6540bb6f4f1d91598154263012dc
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724124389009.25
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3495ad66b7eb4446816fdd57658f065b
+    parentId: fld_e3b6873187834da0aefd7191f85f9557
+    modified: 1724801405995
+    created: 1724189827776
+    url: http://localhost:3000/restaurants/3/delete
+    name: Delete Restaurant
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_a47bb98a7de24a6c92fbeb4a4f808f71
+      - id: pair_472d6540bb6f4f1d91598154263012dc
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724124384603.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_415be082819d4c5db0cd65ab382e0cd4
+    parentId: fld_3073e846c84e48ffb54926acc6fccb69
+    modified: 1724644870143
+    created: 1724090313768
+    url: http://www.localhost:3000/users
+    name: Get All Users
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_9d92a7c55259498badc695342a0203fe
+    authentication: {}
+    metaSortKey: -1724117205531
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_3073e846c84e48ffb54926acc6fccb69
+    parentId: fld_6bbd389e92e9451ba86982e3dab3c082
+    modified: 1724085884157
+    created: 1724085884157
+    name: User
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1724085884157
+    _type: request_group
+  - _id: req_a3d9207729e34f119e8a2a4a64c85bcf
+    parentId: fld_3073e846c84e48ffb54926acc6fccb69
+    modified: 1724813001269
+    created: 1724085888018
+    url: http://www.localhost:3000/users
+    name: Save User
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Gabryel Melo",
+        	"email": "gabryel.melo@gmail.com",
+        	"password": "Senh@123"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/9.3.3
+    authentication: {}
+    metaSortKey: -1724117205481
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_8071a574ef534758bd11b7802676faf7
+    parentId: fld_3073e846c84e48ffb54926acc6fccb69
+    modified: 1724813015415
+    created: 1724117205431
+    url: http://www.localhost:3000/auth
+    name: Login User (Auth)
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "gabryel.melo@gmail.com",
+        	"password": "Senh@123"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/9.3.3
+    authentication: {}
+    metaSortKey: -1724117205431
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3581bbfc61cc488b8ff321848e314908
+    parentId: fld_3073e846c84e48ffb54926acc6fccb69
+    modified: 1724801356076
+    created: 1724115862321
+    url: http://www.localhost:3000/users/disable
+    name: Disable User
+    description: ""
+    method: PATCH
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_a47bb98a7de24a6c92fbeb4a4f808f71
+      - id: pair_472d6540bb6f4f1d91598154263012dc
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724115862321
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_8a5a5083543a48bbb04e714224647e64
+    parentId: fld_3073e846c84e48ffb54926acc6fccb69
+    modified: 1724813030099
+    created: 1724198710145
+    url: http://www.localhost:3000/users/update/profile
+    name: Update User
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Gabryel Teste",
+        	"password": "Senh@123",
+        	"phone": "5332323232"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_d41c441a347945fc874875d08f8da78a
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_fed57138fd3d453a84c330a8def07268
+      - id: pair_7da93db582c8451daa27d00f4023a3e5
+        name: Authorization
+        value: "{% response 'body', 'req_8071a574ef534758bd11b7802676faf7',
+          'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1724085887968
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_4a96588f9fda4a27afddcb3a9c94c189
+    parentId: wrk_6e4242392bd742d69c9de24a94d1d6b4
+    modified: 1724085300240
+    created: 1724085300240
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1724085300240
+    _type: environment
+  - _id: jar_4102d530c4b24695b26b269737a4de6d
+    parentId: wrk_6e4242392bd742d69c9de24a94d1d6b4
+    modified: 1724178092394
+    created: 1724085300335
+    name: Default Jar
+    cookies:
+      - key: dtCookie
+        value: v_4_srv_5_sn_66388862243B9AA7620588054F3B6BF8_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_0
+        domain: esfera.site
+        path: /
+        hostOnly: false
+        creation: 2024-08-20T18:21:32.391Z
+        lastAccessed: 2024-08-20T18:21:32.391Z
+        id: 16513681-f5f2-4048-b646-ac848f88d76c
+    _type: cookie_jar
