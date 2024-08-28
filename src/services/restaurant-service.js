@@ -10,9 +10,33 @@ export class RestaurantService {
             orderBy: [
                 { id: 'asc' }
             ],
-            include: {
+            select: {
+                id: true,
+                name: true,
+                location: true,
+                openingHours: true,
+                description: true,
+                userId: true,
                 sharedWith: true,
-                menu: true
+                menu: {
+                    select: {
+                        categories: {
+                            select: {
+                                id: true,
+                                name: true,
+                                products: {
+                                    select: {
+                                        id: true,
+                                        name: true,
+                                        description: true,
+                                        price: true,
+                                        image: true,
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         });
     }

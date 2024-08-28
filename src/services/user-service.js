@@ -26,7 +26,7 @@ export class UserService {
         });
     }
 
-    async save(email, name, password, phone = undefined) {
+    async save(email, name, password, phone) {
         const encryptedPassword = hashSync(password, 12);
 
         const newUser = await this.db.user.create({

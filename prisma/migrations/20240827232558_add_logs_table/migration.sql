@@ -13,8 +13,9 @@
 CREATE TABLE "Logs" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "action" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
-    "date" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "date" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "user_id" TEXT,
+    "path" TEXT NOT NULL
 );
 
 -- RedefineTables

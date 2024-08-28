@@ -14,8 +14,8 @@ export class RestaurantController {
         try {
             const { name, location, openingHours, description } = req.body;
             const userId = req.user.id;
+            
             const restaurant = await this.restaurantService.save(name, location, openingHours, description, userId);
-
             return res.status(201).json(restaurant);
         } catch (error) {
             return next(error);
