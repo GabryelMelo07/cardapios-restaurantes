@@ -12,10 +12,20 @@ export class MenuService {
                     id: 'asc'
                 }
             ],
-            include: {
+            select: {
                 categories: {
-                    include: {
-                        products: true
+                    select: {
+                        id: true,
+                        name: true,
+                        products: {
+                            select: {
+                                id: true,
+                                name: true,
+                                description: true,
+                                price: true,
+                                image: true
+                            }
+                        }
                     }
                 }
             }
@@ -27,10 +37,20 @@ export class MenuService {
             where: {
                 restaurantId: Number(restaurantId)
             },
-            include: {
+            select: {
                 categories: {
-                    include: {
-                        products: true
+                    select: {
+                        id: true,
+                        name: true,
+                        products: {
+                            select: {
+                                id: true,
+                                name: true,
+                                description: true,
+                                price: true,
+                                image: true
+                            }
+                        }
                     }
                 }
             }
@@ -282,18 +302,23 @@ export class MenuService {
         });
     }
 
-    async deleteCategory(categoryId) {
+    async deleteCategory(restaurantId, categoryId) {
+        console.log(categoryId)
         await this.db.category.delete({
             where: {
-                id: Number(categoryId)
+                id: Number(categoryId),
+                menu: {
+                    restaurantId: Number(restaurantId)
+                }
             }
         });
     }
 
-    async deleteProductFromCategory(productId) {
+    async deleteProductFromCategory(categoryId, productId) {
         await this.db.product.delete({
             where: {
-                id: Number(productId)
+                id: Number(productId),
+                categoryId: Number(categoryId)
             }
         });
     }

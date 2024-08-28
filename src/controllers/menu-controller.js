@@ -76,10 +76,10 @@ export class MenuController {
     }
 
     async deleteProductFromCategory(req, res, next) {
-        const { restaurantId, productId } = req.params;
+        const { categoryId, productId } = req.params;
 
         try {
-            await this.menuService.deleteProductFromCategory(restaurantId, productId);
+            await this.menuService.deleteProductFromCategory(categoryId, productId);
             return res.status(200).json({ message: "Product deleted from category successfully." });
         } catch (error) {
             return next(error);

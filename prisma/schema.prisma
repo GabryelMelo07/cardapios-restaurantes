@@ -76,9 +76,9 @@ model Product {
 model Logs {
   id          Int      @id @default(autoincrement())
   action      String
-  description String
   date        DateTime @default(now())
-  userId      String   @map("user_id")
-  method      String
+  userId      String?   @map("user_id")
   path        String
+
+  @@map("logs")
 }

@@ -23,7 +23,8 @@ export class UserController {
 
     async save(req, res, next) {
         try {
-            const { email, name, password, phone } = req.body;
+            const { email, name, password, phone = undefined } = req.body;
+
             const user = await this.userService.save(email, name, password, phone);
             return res.status(201).json(user);
         } catch (error) {
@@ -33,15 +34,10 @@ export class UserController {
 
     async disable(req, res, next) {
         try {
-            const { userId } = req.params;
-            const user = req.user;
-
-            if (user.id !== userId) { // Only the user can deactivate their profile.
-                throw new Error('Cannot deactivate profile without permission.');
-            }
+            const userId = req.user.id;
             
             await this.userService.disable(userId);
-            return res.status(200).json({ error_message: "User disabled" });
+            return res.status(200).json({ message: "User disabled successfully." });
         } catch (error) {
             return next(error);
         }
@@ -49,7 +45,7 @@ export class UserController {
 
     async update(req, res, next) {
         const requestedBy = req.user.id;
-        const { name, password, phone } = req.body;
+        const { name, password, phone = undefined } = req.body;
 
         try {
             const updatedUser = await this.userService.update(requestedBy, name, password, phone);
