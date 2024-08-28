@@ -1,4 +1,6 @@
 import { dbConnection } from "../config/database.js";
+import { uploadS3 } from "../utils/s3-storage.js";
+
 
 export class MenuService {
     constructor() {
@@ -255,10 +257,16 @@ export class MenuService {
     async addProductToCategory(restaurantId, categoryId, name, description, price, image) {
         const product = await this.db.product.findUnique({
             where: {
-                categoryId: Number(categoryId),
-                name: name
+                name: name,
+                categoryId: Number(categoryId)
             }
         });
+
+        let imageUrl;
+
+        if (image) {
+            imageUrl = await uploadS3(image);
+        }
 
         if (!product) {
             await this.db.product.create({
@@ -266,7 +274,7 @@ export class MenuService {
                     name,
                     description,
                     price,
-                    image,
+                    image: imageUrl,
                     category: {
                         connect: {
                             id: Number(categoryId)
@@ -277,13 +285,14 @@ export class MenuService {
         } else {
             await this.db.product.update({
                 where: {
+                    id: product.id,
                     categoryId: Number(categoryId)
                 },
                 data: {
                     name,
                     description,
                     price,
-                    image
+                    image: imageUrl
                 }
             });
         }
@@ -337,6 +346,12 @@ export class MenuService {
     }
 
     async updateProduct(productId, name, description, price, image) {
+        let imageUrl;
+
+        if (image) {
+            imageUrl = await uploadS3(image);
+        }
+        
         try {
             const updatedProduct = await this.db.product.update({
                 where: {
@@ -346,7 +361,7 @@ export class MenuService {
                     name,
                     description,
                     price,
-                    image
+                    image: imageUrl
                 }
             });
 
@@ -360,4 +375,25 @@ export class MenuService {
         }
     }
 
+    async uploadProductImage(productId, image) {
+        if (image) {
+            const imageUrl = await uploadS3(image);
+
+            try {
+                const updatedProduct = await this.db.product.update({
+                    where: {
+                        id: Number(productId),
+                    },
+                    data: {
+                        image: imageUrl
+                    }
+                });
+    
+                return updatedProduct;
+            } catch (error) {
+                throw error;
+            }
+        }
+    }
+    
 }
